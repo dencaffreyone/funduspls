@@ -1,0 +1,573 @@
+App\Entity\Admin:
+  admin:
+    username: admin
+    password: admin
+  admin2:
+    username: admin2
+    password: admin2
+    two_factor_authentication: 1
+    two_factor_code: 999999
+    two_factor_email: test@email.com
+
+App\Entity\ContentPage:
+  homepage:
+    name: Homepage
+    level: 1
+    change_frequency: daily
+    route: homepage
+    priority: 0.9
+    has_meta_title: 1
+    has_meta_keywords: 1
+    has_meta_description: 1
+    has_content: 0
+    controller_action: "App\\Controller\\Frontend\\MainController::index"
+    template: "Main\\index.html.twig"
+  impressum:
+    parent: "@homepage"
+    name: Impressum
+    level: 1
+    change_frequency: weekly
+    route: impressum
+    priority: 0.5
+    has_meta_title: 1
+    has_meta_keywords: 1
+    has_meta_description: 1
+    has_content: 1
+    controller_action: "App\\Controller\\Frontend\\MainController::page"
+    template: "Main\\page.html.twig"
+  privacy_policy:
+    parent: "@homepage"
+    name: Privacy Policy
+    level: 1
+    change_frequency: weekly
+    route: privacy_policy
+    priority: 0.5
+    has_meta_title: 1
+    has_meta_keywords: 1
+    has_meta_description: 1
+    has_content: 1
+    controller_action: "App\\Controller\\Frontend\\MainController::page"
+    template: "Main\\page.html.twig"
+
+App\Entity\ContentPageTranslation:
+  homepage_translation_en:
+    translatable: "@homepage"
+    url: "/en"
+    meta_title: ''
+    meta_keywords: ''
+    meta_description: ''
+    content: ''
+    locale: en
+  homepage_translation_de:
+    translatable: "@homepage"
+    url: "/de"
+    meta_title: ''
+    meta_keywords: ''
+    meta_description: ''
+    content: ''
+    locale: de
+  impressum_translation_en:
+    translatable: "@impressum"
+    url: "/impressum"
+    meta_title: ''
+    meta_keywords: ''
+    meta_description: ''
+    content: ''
+    locale: en
+  impressum_translation_de:
+    translatable: "@impressum"
+    url: "/impressum"
+    meta_title: ''
+    meta_keywords: ''
+    meta_description: ''
+    content: ''
+    locale: de
+  privacy_policy_translation_en:
+    translatable: "@privacy_policy"
+    url: "/privacy-policy"
+    meta_title: ''
+    meta_keywords: ''
+    meta_description: ''
+    content: ''
+    locale: en
+  privacy_policy_translation_de:
+    translatable: "@privacy_policy"
+    url: "/datenschutz"
+    meta_title: ''
+    meta_keywords: ''
+    meta_description: ''
+    content: ''
+    locale: de
+
+App\Entity\ContentTextBlock:
+  homepage_header:
+    name: Header
+    uid: homepage_header
+    has_title: 1
+    has_content: 1
+    level: 2
+    parent: "@homepage"
+  homepage_what_we_do:
+    name: What we do
+    uid: homepage_what_we_do
+    has_title: 1
+    has_content: 0
+    level: 2
+    parent: "@homepage"
+  homepage_what_we_do_1:
+    name: Helping Startups
+    uid: homepage_what_we_do_1
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_what_we_do"
+  homepage_what_we_do_2:
+    name: Creating Products
+    uid: homepage_what_we_do_2
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_what_we_do"
+  homepage_what_we_do_3:
+    name: Consulting Investors
+    uid: homepage_what_we_do_3
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_what_we_do"
+  homepage_how_we_do:
+    name: How we do it
+    uid: homepage_how_we_do
+    has_title: 1
+    has_content: 0
+    level: 2
+    parent: "@homepage"
+  homepage_how_we_do_1:
+    name: Technology
+    uid: homepage_how_we_do_1
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_how_we_do"
+  homepage_how_we_do_2:
+    name: Knowledge
+    uid: homepage_how_we_do_2
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_how_we_do"
+  homepage_how_we_do_3:
+    name: Intelligence
+    uid: homepage_how_we_do_3
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_how_we_do"
+  homepage_how_we_do_list:
+    name: List
+    uid: homepage_how_we_do_list
+    has_title: 0
+    has_content: 1
+    level: 3
+    parent: "@homepage_how_we_do"
+  homepage_business_processing:
+    name: Business Processing
+    uid: homepage_business_processing
+    has_title: 1
+    has_content: 1
+    level: 2
+    parent: "@homepage"
+  homepage_business_processing_carousel:
+    name: Business Processing Carousel
+    uid: homepage_business_processing_carousel
+    has_title: 0
+    has_content: 0
+    level: 2
+    parent: "@homepage"
+  homepage_business_processing_carousel_1:
+    name: 1. Donec retrum congue leo eget malesuada.
+    uid: homepage_business_processing_carousel_1
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_business_processing_carousel_2:
+    name: 2. Vestibulum ac diam sit amet quam vehicula sed.
+    uid: homepage_business_processing_carousel_2
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_business_processing_carousel_3:
+    name: 3. Donec sollicitudin molestie malesuada.
+    uid: homepage_business_processing_carousel_3
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_business_processing_carousel_4:
+    name: 4. Curabitur aliquet quam id dui posuere blandit.
+    uid: homepage_business_processing_carousel_4
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_business_processing_carousel_5:
+    name: 5. Curabitur arcu erat, accumsan id imperdiet et.
+    uid: homepage_business_processing_carousel_5
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_business_processing_carousel_6:
+    name: 6. Curabitur arcu erat, accumsan id imperdiet et.
+    uid: homepage_business_processing_carousel_6
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_business_processing_carousel_7:
+    name: 7. Curabitur arcu erat, accumsan id imperdiet et.
+    uid: homepage_business_processing_carousel_7
+    has_title: 1
+    has_content: 1
+    level: 3
+    parent: "@homepage_business_processing_carousel"
+  homepage_testimonials:
+    name: Testimonials
+    uid: homepage_testimonials
+    has_title: 0
+    has_content: 0
+    level: 2
+    parent: "@homepage"
+  homepage_testimonials_1:
+    name: Testimonial 1
+    uid: homepage_testimonials_1
+    has_title: 0
+    has_content: 1
+    level: 3
+    parent: "@homepage_testimonials"
+  homepage_testimonials_2:
+    name: Testimonial 2
+    uid: homepage_testimonials_2
+    has_title: 0
+    has_content: 1
+    level: 3
+    parent: "@homepage_testimonials"
+  homepage_testimonials_3:
+    name: Testimonial 3
+    uid: homepage_testimonials_3
+    has_title: 0
+    has_content: 1
+    level: 3
+    parent: "@homepage_testimonials"
+  homepage_testimonials_4:
+    name: Testimonial 4
+    uid: homepage_testimonials_4
+    has_title: 0
+    has_content: 1
+    level: 3
+    parent: "@homepage_testimonials"
+  homepage_contact_form:
+    name: Contact form
+    uid: homepage_contact_form
+    has_title: 0
+    has_content: 0
+    level: 2
+    parent: "@homepage"
+  homepage_contact_form_agree_label:
+    name: Agree Label
+    uid: homepage_contact_form_agree_label
+    has_title: 0
+    has_content: 1
+    level: 3
+    parent: "@homepage_contact_form"
+
+App\Entity\ContentTextBlockTranslation:
+  homepage_header_en:
+    translatable: "@homepage_header"
+    title: "WE ARE..."
+    content: >
+      <identity('<p>Lore perovit optatur, eritias excerum dolorerit quis magnihi ligenet fuga. Et eatur rersperrum si cus esti ducium es aut modit la vit excessit quo vent, int ut quatiam nossit dolupitatur?</p>')>
+    locale: en
+  homepage_header_de:
+    translatable: "@homepage_header"
+    title: "WE ARE..."
+    content: >
+      <identity('<p>Lore perovit optatur, eritias excerum dolorerit quis magnihi ligenet fuga. Et eatur rersperrum si cus esti ducium es aut modit la vit excessit quo vent, int ut quatiam nossit dolupitatur?</p>')>
+    locale: de
+  homepage_what_we_do_en:
+    translatable: "@homepage_what_we_do"
+    title: "What we do?"
+    content: ""
+    locale: en
+  homepage_what_we_do_de:
+    translatable: "@homepage_what_we_do"
+    title: "What we do?"
+    content: ""
+    locale: de
+  homepage_what_we_do_1_en:
+    translatable: "@homepage_what_we_do_1"
+    title: "Helping Startups"
+    content: >
+      <identity('<p>Create MVPs, choosing the most suitable strategy, preparing for investment rounds.</p>')>
+    locale: en
+  homepage_what_we_do_1_de:
+    translatable: "@homepage_what_we_do_1"
+    title: "Helping Startups"
+    content: >
+      <identity('<p>Create MVPs, choosing the most suitable strategy, preparing for investment rounds.</p>')>
+    locale: de
+  homepage_what_we_do_2_en:
+    translatable: "@homepage_what_we_do_2"
+    title: "Creating Products"
+    content: >
+      <identity('<p>Together with the businesses we drive their ideas from a single sentence to a full-fledged concept.</p>')>
+    locale: en
+  homepage_what_we_do_2_de:
+    translatable: "@homepage_what_we_do_2"
+    title: "Creating Products"
+    content: >
+      <identity('<p>Together with the businesses we drive their ideas from a single sentence to a full-fledged concept.</p>')>
+    locale: de
+  homepage_what_we_do_3_en:
+    translatable: "@homepage_what_we_do_3"
+    title: "Consulting Investors"
+    content: >
+      <identity('<p>Preparing the multi-context decision base with addressed risks for the investment.</p>')>
+    locale: en
+  homepage_what_we_do_3_de:
+    translatable: "@homepage_what_we_do_3"
+    title: "Consulting Investors"
+    content: >
+      <identity('<p>Preparing the multi-context decision base with addressed risks for the investment.</p>')>
+    locale: de
+  homepage_how_we_do_en:
+    translatable: "@homepage_how_we_do"
+    title: "How we do it?"
+    content: ''
+    locale: en
+  homepage_how_we_do_de:
+    translatable: "@homepage_how_we_do"
+    title: "How we do it?"
+    content: ''
+    locale: de
+  homepage_how_we_do_1_en:
+    translatable: "@homepage_how_we_do_1"
+    title: "Technology"
+    content: >
+      <identity('<p>Applying technology to the business goals within our innovative flexible engineering process that is ready to virtually any requirements changes during development.</p>')>
+    locale: en
+  homepage_how_we_do_1_de:
+    translatable: "@homepage_how_we_do_1"
+    title: "Technology"
+    content: >
+      <identity('<p>Applying technology to the business goals within our innovative flexible engineering process that is ready to virtually any requirements changes during development.</p>')>
+    locale: de
+  homepage_how_we_do_2_en:
+    translatable: "@homepage_how_we_do_2"
+    title: "Knowledge"
+    content: >
+      <identity('<p>Training and certifying specialists. Conducting workshops and mentoring at hackathons. Publishing valuable content in trending technology topics.</p>')>
+    locale: en
+  homepage_how_we_do_2_de:
+    translatable: "@homepage_how_we_do_2"
+    title: "Knowledge"
+    content: >
+      <identity('<p>Training and certifying specialists. Conducting workshops and mentoring at hackathons. Publishing valuable content in trending technology topics.</p>')>
+    locale: de
+  homepage_how_we_do_3_en:
+    translatable: "@homepage_how_we_do_3"
+    title: "Intelligence"
+    content: >
+      <identity('<p>Performing business-analysis and consulting to create solutions for the businesses. Engineering product design, creating products that answer the real user needs.</p>')>
+    locale: en
+  homepage_how_we_do_3_de:
+    translatable: "@homepage_how_we_do_3"
+    title: "Intelligence"
+    content: >
+      <identity('<p>Performing business-analysis and consulting to create solutions for the businesses. Engineering product design, creating products that answer the real user needs.</p>')>
+    locale: de
+  homepage_how_we_do_list_en:
+    translatable: "@homepage_how_we_do_list"
+    title: ""
+    content: >
+      <identity('<ul><li>~1362Requests processed by our custom proprietary AI daily</li><li>167 Projects completed</li><li>86 Startups consulted</li><li>26 Areas of expertise in the team</li><li>Partners from18countries</li><li>17 Team members</li><li>15 Years in the IT-business</li></ul>')>
+    locale: en
+  homepage_how_we_do_list_de:
+    translatable: "@homepage_how_we_do_list"
+    title: ""
+    content: >
+      <identity('<ul><li>~1362Requests processed by our custom proprietary AI daily</li><li>167 Projects completed</li><li>86 Startups consulted</li><li>26 Areas of expertise in the team</li><li>Partners from18countries</li><li>17 Team members</li><li>15 Years in the IT-business</li></ul>')>
+    locale: de
+  homepage_business_processing_en:
+    translatable: "@homepage_business_processing"
+    title: "Business Processing"
+    content: >
+      <identity('<p>Aspelectis quos delit aut el magnimi, untinto ea pa int, que laborum quiam et magnitatur maionse quuntecae eum sequati berovid quideruntem non rendem. Imost alictis volestiusa nes quam qui atinulp arcipsam sum lanihic ipsam, ium qui dus con cuscipsum restissim et est, tet optam soles esequam everrum nis diostis expland itatur? Invenihicia dipsand igenimuscid quatur mo molupta core, omnit volorio estem nonsequo volori dolore optatio rporum quidunt, tem deliquiam harum fugit volut volupta con peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonseque sundae idelit, volo bea dolupis dio to dite num lab</p>')>
+    locale: en
+  homepage_business_processing_de:
+    translatable: "@homepage_business_processing"
+    title: "Business Processing"
+    content: >
+      <identity('<p>Aspelectis quos delit aut el magnimi, untinto ea pa int, que laborum quiam et magnitatur maionse quuntecae eum sequati berovid quideruntem non rendem. Imost alictis volestiusa nes quam qui atinulp arcipsam sum lanihic ipsam, ium qui dus con cuscipsum restissim et est, tet optam soles esequam everrum nis diostis expland itatur? Invenihicia dipsand igenimuscid quatur mo molupta core, omnit volorio estem nonsequo volori dolore optatio rporum quidunt, tem deliquiam harum fugit volut volupta con peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonseque sundae idelit, volo bea dolupis dio to dite num lab</p>')>
+    locale: de
+  homepage_business_processing_carousel_en:
+    translatable: "@homepage_business_processing_carousel"
+    title: ""
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_de:
+    translatable: "@homepage_business_processing_carousel"
+    title: ""
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_1_en:
+    translatable: "@homepage_business_processing_carousel_1"
+    title: "1. Donec retrum congue leo eget malesuada."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_1_de:
+    translatable: "@homepage_business_processing_carousel_1"
+    title: "1. Donec retrum congue leo eget malesuada."
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_2_en:
+    translatable: "@homepage_business_processing_carousel_2"
+    title: "2. Vestibulum ac diam sit amet quam vehicula sed."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_2_de:
+    translatable: "@homepage_business_processing_carousel_2"
+    title: "2. Vestibulum ac diam sit amet quam vehicula sed."
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_3_en:
+    translatable: "@homepage_business_processing_carousel_3"
+    title: "3. Donec sollicitudin molestie malesuada."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_3_de:
+    translatable: "@homepage_business_processing_carousel_3"
+    title: "3. Donec sollicitudin molestie malesuada."
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_4_en:
+    translatable: "@homepage_business_processing_carousel_4"
+    title: "4. Curabitur aliquet quam id dui posuere blandit."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_4_de:
+    translatable: "@homepage_business_processing_carousel_4"
+    title: "4. Curabitur aliquet quam id dui posuere blandit."
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_5_en:
+    translatable: "@homepage_business_processing_carousel_5"
+    title: "5. Curabitur arcu erat, accumsan id imperdiet et."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_5_de:
+    translatable: "@homepage_business_processing_carousel_5"
+    title: "5. Curabitur arcu erat, accumsan id imperdiet et."
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_6_en:
+    translatable: "@homepage_business_processing_carousel_6"
+    title: "6. Curabitur arcu erat, accumsan id imperdiet et."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_6_de:
+    translatable: "@homepage_business_processing_carousel_6"
+    title: "6. Curabitur arcu erat, accumsan id imperdiet et."
+    content: ""
+    locale: de
+  homepage_business_processing_carousel_7_en:
+    translatable: "@homepage_business_processing_carousel_7"
+    title: "7. Curabitur arcu erat, accumsan id imperdiet et."
+    content: ""
+    locale: en
+  homepage_business_processing_carousel_7_de:
+    translatable: "@homepage_business_processing_carousel_7"
+    title: "7. Curabitur arcu erat, accumsan id imperdiet et."
+    content: ""
+    locale: de
+  homepage_testimonials_1_en:
+    translatable: "@homepage_testimonials_1"
+    title: ""
+    content: >
+      <identity('<p>Aspelectis quos delit aut el magnimi, untinto ea pa int, que laborum quiam et magnitatur maionse quuntecae eum sequati berovid quideruntem non rendem. peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonse</p>')>
+    locale: en
+  homepage_testimonials_1_de:
+    translatable: "@homepage_testimonials_1"
+    title: ""
+    content: >
+      <identity('<p>Aspelectis quos delit aut el magnimi, untinto ea pa int, que laborum quiam et magnitatur maionse quuntecae eum sequati berovid quideruntem non rendem. peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonse</p>')>
+    locale: de
+  homepage_testimonials_2_en:
+    translatable: "@homepage_testimonials_2"
+    title: ""
+    content: >
+      <identity('<p>Aspelectis quos delit aut el magnimi, untinto ea pa int, que laborum quiam et magnitatur maionse quuntecae eum sequati berovid quideruntem non rendem. Imost alictis volestiusa nes quam qui atinulp arcipsam sum lanihic ipsam, ium qui dus con cuscipsum restissim et est, tet optam soles esequam everrum nis diostis expland itatur? Invenihicia dipsand igenimuscid quatur</p>')>
+    locale: en
+  homepage_testimonials_2_de:
+    translatable: "@homepage_testimonials_2"
+    title: ""
+    content: >
+      <identity('<p>Aspelectis quos delit aut el magnimi, untinto ea pa int, que laborum quiam et magnitatur maionse quuntecae eum sequati berovid quideruntem non rendem. Imost alictis volestiusa nes quam qui atinulp arcipsam sum lanihic ipsam, ium qui dus con cuscipsum restissim et est, tet optam soles esequam everrum nis diostis expland itatur? Invenihicia dipsand igenimuscid quatur</p>')>
+    locale: de
+  homepage_testimonials_3_en:
+    translatable: "@homepage_testimonials_3"
+    title: ""
+    content: >
+      <identity('<p>Latur mo molupta core, omnit volorio estem nonsequo volori dolore optatio rporum quidunt, tem deliquiam harum fugit volut volupta con peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonseque sundae idelit, volo bea dolupis dio to dite num lab</p>')>
+    locale: en
+  homepage_testimonials_3_de:
+    translatable: "@homepage_testimonials_3"
+    title: ""
+    content: >
+      <identity('<p>Latur mo molupta core, omnit volorio estem nonsequo volori dolore optatio rporum quidunt, tem deliquiam harum fugit volut volupta con peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonseque sundae idelit, volo bea dolupis dio to dite num lab</p>')>
+    locale: de
+  homepage_testimonials_4_en:
+    translatable: "@homepage_testimonials_4"
+    title: ""
+    content: >
+      <identity('<p>Latur mo molupta core, omnit volorio estem nonsequo volori dolore optatio rporum quidunt, tem deliquiam harum fugit volut volupta con peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonseque sundae idelit, volo bea dolupis dio to dite num labHarum iliquae pa cum ipide si diore sunt, omnis illab inimus. Tempore volut ulpa voluptaspis re desciae reperum doluptur, omnis dundae qui core, solorem olorro berspel iquibus pra nullaci aerferorpos et facearchic temporit, vel illenihit, arum il ium estibus aborepe lluptate velit laut untiundent optam quibus, sam quate volore</p>')>
+    locale: en
+  homepage_testimonials_4_de:
+    translatable: "@homepage_testimonials_4"
+    title: ""
+    content: >
+      <identity('<p>Latur mo molupta core, omnit volorio estem nonsequo volori dolore optatio rporum quidunt, tem deliquiam harum fugit volut volupta con peligeniam lam et eatur simolum quae velit ut maionse ctaersp idelest repelignita etus simin nonseque sundae idelit, volo bea dolupis dio to dite num labHarum iliquae pa cum ipide si diore sunt, omnis illab inimus. Tempore volut ulpa voluptaspis re desciae reperum doluptur, omnis dundae qui core, solorem olorro berspel iquibus pra nullaci aerferorpos et facearchic temporit, vel illenihit, arum il ium estibus aborepe lluptate velit laut untiundent optam quibus, sam quate volore</p>')>
+    locale: de
+  homepage_contact_form_agree_label_en:
+    translatable: "@homepage_contact_form_agree_label"
+    title: ""
+    content: >
+      <identity('<p>I agree with <a href="%privacy_link%" target="_blank" style="color: #ffffff; text-decoration: underline">Privacy Policy</a></p>')>
+    locale: en
+  homepage_contact_form_agree_label_de:
+    translatable: "@homepage_contact_form_agree_label"
+    title: ""
+    content: >
+      <identity('<p>I agree with <a href="%privacy_link%" target="_blank" style="color: #ffffff; text-decoration: underline">Privacy Policy</a></p>')>
+    locale: de
+
+App\Entity\EmailTemplate:
+  contact_email:
+    name: Contact Form
+    event: contact
+
+App\Entity\EmailTemplateTranslation:
+  contact_email_en:
+    translatable: "@contact_email"
+    subject: Contact from {siteName}
+    message: >
+      <identity('<p><b>Name</b>: {userName}</p><p><b>Email</b>: {userEmail}</p><p><b>Message</b>: {userMessage}</p>')>
+    locale: en
+  contact_email_de:
+    translatable: "@contact_email"
+    subject: Contact from {siteName}
+    message: >
+      <identity('<p><b>Name</b>: {userName}</p><p><b>Email</b>: {userEmail}</p><p><b>Message</b>: {userMessage}</p>')>
+    locale: de
