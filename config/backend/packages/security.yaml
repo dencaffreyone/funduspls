@@ -1,0 +1,79 @@
+parameters:
+  admin.twofactor.email.provider.class: App\Security\TwoFactor\Email\Helper
+  admin.twofactor.email.interactive_login_listener.class: App\Security\TwoFactor\Listener\InteractiveLoginListener
+  admin.twofactor.email.request_listener.class: App\Security\TwoFactor\Listener\RequestListener
+
+services:
+  admin.twofactor.email.provider:
+    class: "%admin.twofactor.email.provider.class%"
+    arguments:
+      - "@doctrine.orm.entity_manager"
+      - "@swiftmailer.mailer"
+      - '%env(MAIL_FROM)%'
+
+  admin.twofactor.email.interactive_login_listener:
+    class: "%admin.twofactor.email.interactive_login_listener.class%"
+    tags:
+      - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }
+    arguments:
+      - "@admin.twofactor.email.provider"
+
+  admin.twofactor.email.request_listener:
+    class: "%admin.twofactor.email.request_listener.class%"
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onCoreRequest, priority: -1 }
+    arguments:
+      - "@admin.twofactor.email.provider"
+      - "@security.token_storage"
+      - "@twig"
+      - "@router"
+
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\Admin:
+            algorithm: auto
+            cost: 12
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        administrators:
+            entity: { class: App\Entity\Admin, property: username }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_area:
+          pattern:    ^/
+          anonymous: ~
+          form_login:
+            login_path: /login
+            check_path: /login-check
+            always_use_default_target_path: true
+            default_target_path: /dashboard
+          logout:
+            path:   /logout
+            target: /login
+          provider: administrators
+
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+      - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/login-check, role: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/logout, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+      - { path: ^/, role: ROLE_ADMIN }

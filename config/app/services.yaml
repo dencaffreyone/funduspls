@@ -1,0 +1,58 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'en'
+    kernel.current_app: app
+    mail.from: '%env(MAIL_FROM)%'
+    mail.admin: '%env(MAIL_ADMIN)%'
+    locales:
+      - en
+      - de
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true  # Automatically registers your services as commands, event subscribers, etc.
+        public: false        # Allows optimizing the container by removing unused services; this also means
+
+    App\Controller\Frontend\:
+      resource: '../../src/Controller/Frontend'
+      tags: ['controller.service_arguments']
+
+    App\EventListener\ContentImageEventSubscriber:
+      arguments: ["@app.content.image_converter"]
+      tags:
+        - { name: doctrine.event_subscriber, connection: default }
+
+    assets.packages:
+      class: \Symfony\Component\Asset\Packages
+      arguments: ['@assets._default_package']
+      public: true
+
+    app.content.image_converter:
+      class: App\Manager\ContentImageBase64Converter
+      arguments: ["@assets.packages", "uploads/summernote", "%kernel.project_dir%/public/uploads/summernote", "@request_stack"]
+
+    app.content_page.manager:
+      class: App\Manager\ContentPageManager
+      public: true
+      arguments: ["@doctrine.orm.entity_manager", "@router", "%kernel.current_app%", "@filesystem"]
+      calls:
+        - [addCacheDir, ["frontend", "%kernel.cache_dir%"]]
+
+    app.notification.manager:
+      class: App\Manager\NotificationManager
+      public: true
+      arguments: ["@doctrine.orm.entity_manager", "@mailer", "%mail.from%", "%mail.admin%", []]
+
+    App\Translation\Manager\TranslationManager:
+      arguments: ["@doctrine.orm.entity_manager"]
+      public: true
+
+    App\Translation\Loader\DatabaseLoader:
+      arguments: ["@App\\Translation\\Manager\\TranslationManager"]
+      tags:
+        - { name: translation.loader, alias: database, priority: 100 }

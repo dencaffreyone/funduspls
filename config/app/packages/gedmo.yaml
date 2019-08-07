@@ -1,0 +1,28 @@
+parameters:
+  gedmo.listener.uploadable.default_file_info.class: App\Uploadable\UploadedFileInfo
+
+services:
+  gedmo.listener.timestampable:
+    class: Gedmo\Timestampable\TimestampableListener
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }
+    calls:
+      - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+  gedmo.listener.uploadable.mime_type_guesser:
+    class: App\Uploadable\MimeTypeGuesserAdapter
+
+  gedmo.listener.uploadable:
+    class: Gedmo\Uploadable\UploadableListener
+    arguments: ["@gedmo.listener.uploadable.mime_type_guesser"]
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }
+    calls:
+      - [setAnnotationReader, ["@annotation_reader"]]
+      - [setDefaultFileInfoClass, ["%gedmo.listener.uploadable.default_file_info.class%"]]
+
+  gedmo.listener.uploadable.manager:
+    class: App\Uploadable\UploadableManager
+    public: true
+
+    arguments: ["@gedmo.listener.uploadable", "%gedmo.listener.uploadable.default_file_info.class%"]

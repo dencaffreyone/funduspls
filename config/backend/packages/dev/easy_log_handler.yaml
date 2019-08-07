@@ -1,0 +1,2 @@
+imports:
+  - { resource: ../../../app/packages/dev/easy_log_handler.yaml }

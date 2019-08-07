@@ -1,0 +1,5 @@
+services:
+  App\Command\LoadFixturesDataCommand:
+    public: true
+    tags:
+      - { name: console.command }

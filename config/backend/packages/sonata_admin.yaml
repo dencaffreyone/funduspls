@@ -1,0 +1,109 @@
+sonata_block:
+  blocks:
+    sonata.admin.block.admin_list:
+      contexts: [admin]
+
+sonata_admin:
+  title:      'Admin Area'
+  options:
+    html5_validate: true # does not use html5 validation
+    pager_links: 5 # pager max links to display
+    title_mode: single_text
+
+  templates:
+    user_block:           'user_block.html.twig'
+
+    # default global templates
+    # the layout template include javascript/stylesheet to the formatter bundle,
+    # if you don't need it use the default one: SonataAdminBundle::standard_layout.html.twig
+    layout:  'admin_layout.html.twig'
+    ajax:    '@SonataAdmin/ajax_layout.html.twig'
+
+    # default value if done set, actions templates, should extends a global templates
+#    list:    '@SonataAdmin/list.html.twig'
+#    show:    '@SonataAdmin/show.html.twig'
+#    edit:    '@SonataAdmin/edit.html.twig'
+
+
+  dashboard:
+      blocks: []
+
+      groups:
+        sonata.admin.group.data:
+          label:           Data
+          icon:            '<i class="fa fa-database"></i>'
+          items:
+            - sonata.admin.content
+            - sonata.admin.notification.template
+            - sonata.admin.file.image
+            - sonata.admin.file.image.category
+            - sonata.admin.translation
+
+        sonata.admin.group.settings:
+          label:           Settings
+          icon:            '<i class="fa fa-cogs"></i>'
+          items:
+            - sonata.admin.admin
+services:
+  sonata.admin.content:
+    class: App\Admin\AdminContent
+    public: true
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Contents", label: "Pages Contents" }
+    arguments:
+      - ~
+      - App\Entity\Superclass\Content
+      - App\Controller\Backend\ContentAdminController
+#    calls:
+#      - [setSubClasses, [{page: App\Entity\ContentPage, text_block: App\Entity\ContentTextBlock, image: App\Entity\ContentImage}]]
+
+  sonata.admin.notification.template:
+    class: App\Admin\AdminEmailTemplate
+    public: true
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Contents", label: "Emails Templates" }
+    arguments:
+      - ~
+      - App\Entity\EmailTemplate
+      - ~
+
+  sonata.admin.admin:
+    class: App\Admin\AdminUser
+    public: true
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "System", label: "Admins" }
+    arguments:
+      - ~
+      - App\Entity\Admin
+      - ~
+
+  sonata.admin.file.image:
+    class: App\Admin\AdminFileImage
+    public: true
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Contents", label: "Images" }
+    arguments:
+      - ~
+      - App\Entity\FileImage
+      - ~
+
+  sonata.admin.file.image.category:
+    class: App\Admin\AdminFileImageCategory
+    public: true
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Contents", label: "Images Categories" }
+    arguments:
+      - ~
+      - App\Entity\FileImageCategory
+      - App\Controller\Backend\FileImageCategoryAdminController
+
+  sonata.admin.translation:
+    class: App\Admin\AdminTranslation
+    public: true
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Contents", label: "Translations" }
+    arguments:
+      - ~
+      - App\Entity\Translation
+      - ~
+

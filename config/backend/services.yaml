@@ -1,0 +1,17 @@
+imports:
+  - { resource: ../app/services.yaml }
+
+parameters:
+  kernel.current_app: backend
+  locale: en
+
+services:
+  _defaults:
+    bind:
+      $adminPool: "@sonata.admin.pool"
+      $authenticationUtils: "@security.authentication_utils"
+
+  App\Controller\Backend\:
+    resource: '../../src/Controller/Backend'
+    tags: ['controller.service_arguments']
+

@@ -1,0 +1,32 @@
+imports:
+  - { resource: ../app/services.yaml }
+
+parameters:
+  locale: de
+  kernel.current_app: frontend
+
+  app.page_content.default.controller_action: 'FrameworkBundle:Template:template'
+  app.page_content.default.template: 'Default/page.html.twig'
+
+services:
+  _defaults:
+    bind:
+      $notificationService: "@app.notification.manager"
+
+  App\Controller\Frontend\:
+    resource: '../../src/Controller/Frontend'
+    tags: ['controller.service_arguments']
+
+  App\Routing\ContentPageLoader:
+    arguments: ["@doctrine.orm.entity_manager", '%app.page_content.default.controller_action%', '%app.page_content.default.template%']
+    tags: [routing.loader]
+
+  App\Twig\ContentPageTwigExtension:
+    arguments: ["@app.content_page.manager"]
+    tags:
+      - { name: twig.extension }
+
+  App\EventListener\ContentPageListener:
+    arguments: ["@app.content_page.manager", "@router"]
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

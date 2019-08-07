@@ -1,0 +1,2 @@
+imports:
+  - { resource: ../../app/packages/sensio_framework_extra.yaml }
