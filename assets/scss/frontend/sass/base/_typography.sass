@@ -1,0 +1,91 @@
+html,
+body
+	height: 100%
+	width: 100%
+	min-height: 100vh
+	min-width: $min_width
+	margin: 0
+	display: flex
+	flex-direction: column
+
+body
+	font-family: $ff_base
+	font-size: $fz_base
+	line-height: $lh_base
+	background: $bg
+	color: $base
+
+body,
+input,
+button,
+textarea
+	font-family: $ff_base
+
+input,
+button,
+textarea
+	@include resetInput
+
+button
+	cursor: pointer
+	&::-moz-focus-inner
+		border: 0
+		padding: 0
+
+a
+	cursor: pointer
+	text-decoration: none
+	//color: $blue_dark
+
+em,
+i
+	font-style: italic
+
+b,
+strong
+	font-weight: bold
+
+*
+	box-sizing: border-box
+
+
+h1,
+h2,
+h3,
+h4
+	color: $base
+	font-weight: 600
+	margin-bottom: 20px
+	word-break: break-word
+
+h1
+	font-size: 36px
+
+h2
+	font-size: 32px
+
+h3
+	font-size: 24px
+
+h4
+	font-size: 18px
+
+p
+	margin-bottom: 10px
+	word-break: break-word
+
+img
+	max-width: 100%
+
+.-nowrap
+	white-space: nowrap
+
+.-hide
+	display: none
+
+[data-mobile-text]
+	font-size: 0
+
+	&:before
+		content: attr(data-mobile-text)
+		font-size: $fz_base

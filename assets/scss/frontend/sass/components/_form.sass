@@ -1,0 +1,97 @@
+.form
+  &__row
+    display: flex
+  &__col
+    flex: 1
+    margin-right: 15px
+    &:last-child
+      margin-right: 0
+
+  &__group
+    margin-bottom: 12px
+
+  &__field
+    input
+      background: rgba(255, 255, 255, 0.3)
+      border: 1px solid #fff
+      width: 100%
+      font-size: 18px
+      border-radius: 10px
+      padding: 15px
+      color: #fff
+
+    textarea
+      background: rgba(255, 255, 255, 0.3)
+      border: 1px solid #fff
+      width: 100%
+      font-size: 18px
+      border-radius: 10px
+      padding: 15px
+      color: #fff
+      resize: none
+
+  &__contact
+    .form__field
+      input
+        &::placeholder
+          color: #fff
+          opacity: 0.7
+
+      textarea
+        &::placeholder
+          color: #fff
+          opacity: 0.7
+
+.checkbox
+  position: relative
+  cursor: pointer
+  color: #fff
+
+  &__input
+    width: 20px !important
+    position: absolute
+    left: 0
+    opacity: 0
+    top: 5px
+
+  &__input:checked + &__i:before,
+  &__input:checked ~ &__i:before
+    display: block
+
+  &__input:disabled + &__i,
+  &__input:disabled ~ &__i
+    background: red
+
+  &__i
+    display: inline-block
+    width: 20px
+    height: 20px
+    background: rgba(255, 255, 255, 0.3)
+    border-radius: 15%
+    vertical-align: top
+    margin-right: 5px
+    position: relative
+    border: 1px solid #fff
+    top: 1px
+
+    &:before
+      display: none
+      position: absolute
+      top: 3px
+      left: 3px
+      width: 12px
+      height: 12px
+      content: ''
+      background: #fff
+      border-radius: 15%
+
+  &__label
+    cursor: pointer
+
+  &_contact
+    display: inline-block
+    padding-left: 30px
+
+    & > .checkbox__i
+      position: absolute
+      left: 0

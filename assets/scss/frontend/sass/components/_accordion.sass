@@ -1,0 +1,29 @@
+.js-accordion_item
+  &.-active
+    & > .js-accordion_item_opener
+      position: relative
+
+      &:before
+        content: "\f056"
+
+  & > .js-accordion_item_opener
+    position: relative
+
+    &:before
+      font-family: "Font Awesome 5 Free"
+      content: "\f055"
+      display: inline-block
+      vertical-align: middle
+      font-weight: 900
+      color: $footer
+      position: absolute
+      font-size: 20px
+      right: -30px
+
+  &_opener
+    cursor: pointer
+    padding: 20px 0px 20px 20px
+
+  &_content
+    display: none
+    padding: 0px 0px 20px 20px
