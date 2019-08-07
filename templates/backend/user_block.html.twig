@@ -1,0 +1,13 @@
+{% block user_block %}
+    {% if app.user %}
+        <li class="user-footer">
+            <div class="pull-left">
+                <p>Logged as: <b>{{ app.user.username }}</b></p>
+            </div>
+
+            <div class="pull-right">
+                <a href="{{ url('logout') }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </div>
+        </li>
+    {% endif %}
+{% endblock %}

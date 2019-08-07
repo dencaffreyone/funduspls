@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="banner" style="background-image: url({{ asset('build/images/banner.jpg') }})">
+        <div class="banner__polygon">
+            <h1 class="banner__title">{{ render_text_block_title('homepage_header') }}</h1>
+            <div class="banner__subtitle">
+                {{ render_text_block('homepage_header') | raw }}
+            </div>
+
+            <div class="banner__logo">
+                <div class="banner__logo_item _iknow"></div>
+                <div class="banner__logo_item _ilence"></div>
+                <div class="banner__logo_item _ilogy"></div>
+            </div>
+        </div>
+        <div class="banner__triangle">
+            <svg width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" height="90">
+                <polygon fill="#fff" fill-opacity="0.6" points="0 100, 100 100, 40 0"></polygon>
+                <polygon fill="#00cab6" fill-opacity="0.7" points="0 100, 20 10, 100 100"></polygon>
+            </svg>
+        </div>
+    </div>
+
+    <div class="what-we-do block">
+        <div class="block__in -center">
+            <h1 class="what-we-do__title -line-title">{{ render_text_block_title('homepage_what_we_do') | trans }}</h1>
+            <div class="what-we-do__block">
+                <div class="what-we-do__item">
+                    <i class="what-we-do__item_ico fas fa-handshake"></i>
+                    <p class="what-we-do__item_title">{{ render_text_block_title('homepage_what_we_do_1') }}</p>
+                    <div class="what-we-do__item_text">{{ render_text_block('homepage_what_we_do_1') | raw }}</div>
+                </div>
+                <div class="what-we-do__item">
+                    <i class="what-we-do__item_ico fas fa-puzzle-piece"></i>
+                    <p class="what-we-do__item_title">{{ render_text_block_title('homepage_what_we_do_2') }}</p>
+                    <div class="what-we-do__item_text">{{ render_text_block('homepage_what_we_do_2') | raw }}</div>
+                </div>
+                <div class="what-we-do__item">
+                    <i class="what-we-do__item_ico fas fa-chart-line"></i>
+                    <p class="what-we-do__item_title">{{ render_text_block_title('homepage_what_we_do_3') }}</p>
+                    <div class="what-we-do__item_text">{{ render_text_block('homepage_what_we_do_3') | raw }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="how-we-do" style="background-image: url({{ asset('build/images/how-we-do-it.jpg') }})">
+        <div class="block__in">
+            <div class="how-we-do__title">{{ render_text_block_title('homepage_how_we_do') | trans }}</div>
+            <div class="how-we-do__left">
+                <div class="how-we-do__left_item">
+                    <p class="how-we-do__left_title">{{ render_text_block_title('homepage_how_we_do_1') }}</p>
+                    <div class="how-we-do__left_text">{{ render_text_block('homepage_how_we_do_1') | raw }}</div>
+                </div>
+                <div class="how-we-do__left_item">
+                    <p class="how-we-do__left_title">{{ render_text_block_title('homepage_how_we_do_2') }}</p>
+                    <div class="how-we-do__left_text">{{ render_text_block('homepage_how_we_do_2') | raw }}</div>
+                </div>
+                <div class="how-we-do__left_item">
+                    <p class="how-we-do__left_title">{{ render_text_block_title('homepage_how_we_do_3') }}</p>
+                    <div class="how-we-do__left_text">{{ render_text_block('homepage_how_we_do_3') | raw }}</div>
+                </div>
+            </div>
+            <div class="how-we-do__right how-we-do__list">
+                {{ render_text_block('homepage_how_we_do_list') | raw }}
+            </div>
+        </div>
+    </div>
+    <div class="business">
+        <div class="block__in">
+            <div class="business__left">
+                <p class="business__title">{{ render_text_block_title('homepage_business_processing') }}</p>
+                <div>{{ render_text_block('homepage_business_processing') | raw }}</div>
+            </div>
+            <div class="business__right js-accordion">
+                <div class="business__item -first js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_1') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_1') | raw }}</div>
+                </div>
+                <div class="business__item -second js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_2') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_2') | raw }}</div>
+                </div>
+                <div class="business__item -third js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_3') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_3') | raw }}</div>
+                </div>
+                <div class="business__item -fourth js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_4') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_4') | raw }}</div>
+                </div>
+                <div class="business__item -fifth js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_5') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_5') | raw }}</div>
+                </div>
+                <div class="business__item -fifth js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_6') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_6') | raw }}</div>
+                </div>
+                <div class="business__item -fifth js-accordion_item">
+                    <div class="js-accordion_item_opener">{{ render_text_block_title('homepage_business_processing_carousel_7') }}</div>
+                    <div class="js-accordion_item_content">{{ render_text_block('homepage_business_processing_carousel_7') | raw }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonials">
+        <div class="testimonials__triangle"></div>
+        <style>
+            .testimonials::before {
+                background-image: url({{ asset('build/images/men.jpg') }});
+            }
+        </style>
+        <div class="block__in testimonials__z-index">
+            <div class="testimonials__form">
+                <div class="testimonials__form_block">
+                    <p class="testimonials__form_title" id="contact">{{ 'Contact us' | trans }}</p>
+
+                    {{ render(controller('App\\Controller\\Frontend\\MainController::contact')) }}
+                </div>
+            </div>
+            <div class="testimonials__message">
+                <p class="testimonials__message_title">{{ 'Testimonials' | trans }}</p>
+                <div class="testimonials__message_item">
+                    {{ render_text_block('homepage_testimonials_1') | raw }}
+                </div>
+                <div class="testimonials__message_item">
+                    {{ render_text_block('homepage_testimonials_2') | raw }}
+                </div>
+                <div class="testimonials__message_item">
+                    {{ render_text_block('homepage_testimonials_3') | raw }}
+                </div>
+                <div class="testimonials__message_item">
+                    {{ render_text_block('homepage_testimonials_4') | raw }}
+                </div>
+{#                <a href="#" class="testimonials__message_link -btn -testimonials" title="More testimonials">More testimonials</a>#}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

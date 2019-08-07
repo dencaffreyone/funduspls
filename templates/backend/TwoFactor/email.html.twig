@@ -1,0 +1,33 @@
+{% extends 'admin_layout.html.twig' %}
+
+{% block sonata_header %}{% endblock %}
+{% block sonata_left_side %}{% endblock %}
+{% block sonata_nav %}{% endblock %}
+{% block sonata_breadcrumb %}{% endblock %}
+
+{% block body_attributes %}class="sonata-bc bg-black"{% endblock %}
+
+{% block sonata_wrapper %}
+    <div id="login-box" class="form-box">
+        <div class="header">Authentication</div>
+        <form action="{{ path('login') }}" method="post" role="form" class="form-horizontal">
+            <div class="body bg-gray">
+                {% for flashMessage in app.session.flashbag.get("error") %}
+                    <div class="alert alert-danger alert-error">{{ flashMessage }}</div>
+                {% endfor %}
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="_auth_code"
+                           placeholder="Authentication Code"
+                           autocomplete="off" name="_auth_code"
+                           required="required"/>
+                </div>
+            </div>
+
+            <div class="footer">
+                <button class="btn bg-ivory btn-block" name="_submit" id="_submit" type="submit">Login</button>
+                <a class="btn btn-block bg-red" href="{{ path("logout") }}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

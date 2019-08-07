@@ -1,0 +1,9 @@
+{{ object.levelOffset('&nbsp;&nbsp;') | raw }}
+{% if object.isPage() %}
+    <i class="fa fa-file" aria-hidden="true"></i>
+{% elseif object.isTextBlock() %}
+    <i class="fa fa-file-o" aria-hidden="true"></i>
+{% elseif object.isImage() %}
+    <i class="fa fa-image" aria-hidden="true"></i>
+{% endif %}
+{{ object.name }}

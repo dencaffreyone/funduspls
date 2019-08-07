@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="block page">
+        <div class="block__in">
+            {{ app.request.attributes.get('content') | raw }}
+        </div>
+    </div>
+{% endblock %}

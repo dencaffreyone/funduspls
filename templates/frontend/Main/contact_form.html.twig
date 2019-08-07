@@ -1,0 +1,57 @@
+{{ form_start(form, {'attr': {
+    'id': 'contact-form',
+    'data-submit-to-container': 'contact-form',
+    'class': 'form form__contact js-form-submit',
+    'action': path('contact', {'_locale': app.request.locale})}
+}) }}
+    <div class="form__row">
+        <div class="form__col">
+            <div class="form__group">
+                <div class="form__field">
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+            </div>
+        </div>
+        <div class="form__col">
+            <div class="form__group">
+                <div class="form__field">
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form__group">
+        <div class="form__field">
+            {{ form_errors(form.message) }}
+            {{ form_widget(form.message, {'attr': {'cols': 30, 'rows': 5}}) }}
+        </div>
+    </div>
+    <div class="form__group">
+        <div class="form__field">
+            <label for="contact_agree" class="checkbox checkbox_contact">
+                {{ form_widget(form.agree, {'attr': {'class': 'checkbox__input'}}) }}
+                <i class="checkbox__i"></i>
+                {{ render_text_block('homepage_contact_form_agree_label', {'%privacy_link%': path('privacy_policy')}) | raw }}
+            </label>
+        </div>
+    </div>
+    <div class="form__row">
+        <div class="form__col">
+            <div class="form__group">
+                <p class="testimonials__form_text">
+                {% if (message_sent) %}
+                    {{ 'Message sent' | trans }}
+                {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="form__col">
+            <div class="form__group">
+                <button class="-btn -contact-btn" type="submit">{{ 'Send' | trans }}</button>
+            </div>
+        </div>
+    </div>
+{{ form_end(form) }}

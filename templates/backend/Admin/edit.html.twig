@@ -1,0 +1,16 @@
+{% extends '@SonataAdmin/CRUD/base_edit.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+		$(document).ready(function () {
+			$('#{{ admin.uniqid }}_two_factor_authentication').on('ifChanged', function (event) {
+				$('#sonata-ba-field-container-{{ admin.uniqid }}_two_factor_email').hide();
+				if ($(this).iCheck('update')[0].checked) {
+					$('#sonata-ba-field-container-{{ admin.uniqid }}_two_factor_email').show();
+				}
+			}).trigger('ifChanged');
+		})
+    </script>
+{% endblock %}

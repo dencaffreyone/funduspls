@@ -1,0 +1,13 @@
+{% if app.session.flashBag.has('notice') or app.session.flashBag.has('error') %}
+    {% if app.session.flashBag.has('notice') %}
+        {% for flash_message in app.session.flashBag.get('notice') %}
+            <p>{{ flash_message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% if app.session.flashBag.has('error') %}
+        {% for flash_message in app.session.flashBag.get('error') %}
+            <p>{{ flash_message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endif %}

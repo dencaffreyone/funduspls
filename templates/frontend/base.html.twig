@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>{% block meta_title %}{{ app.request.attributes.get('meta_title', 'Techknowledgence') | raw }}{% endblock %}</title>
+    <meta name="keywords" content="{{ app.request.attributes.get('meta_keywords') | raw }}"/>
+    <meta name="description" content="{{ app.request.attributes.get('meta_description') | raw }}"/>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('css/frontend') }}
+    {% endblock %}
+</head>
+<body {% block body_attr %}{% endblock %}>
+{% block document %}
+    <div class="layout">
+        <div class="layout__header">
+            <header class="block header">
+                <div class="header__top">
+                    <div class="block__in header__contact">
+                        <div class="header__contact_left">
+{#                            <span class="header__contact_text">{{ 'Follow us' | trans }}:</span>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-twitter-square"></i></a>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-tumblr-square"></i></a>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-facebook-square"></i></a>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-linkedin"></i></a>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-xing-square"></i></a>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-google-plus-square"></i></a>#}
+{#                            <a href="#" target="_blank" rel="nofollow" class="header__contact_link"><i class="header__contact_ico fab fa-instagram"></i></a>#}
+                        </div>
+
+                        <div class="header__contact_right">
+                            <a href="tel: +492232000000" rel="nofollow" class="-mr10"><i class="header__contact_ico fab fa-viber"></i></a>
+                            <span class="header__contact_text">+49 2232 00 00 00</span>
+                            <div class="-white_line"></div>
+                            <a href="#" target="_blank" rel="nofollow" class="-mr10"><i class="header__contact_ico fas fa-map-marker-alt"></i></a>
+                            <span class="header__contact_text">Schanzenstraße 38, 51063 Köln</span>
+{#                            <div class="-white_line"></div>#}
+{#                            <div class="header__flag"></div>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="header__nav">
+                    <div class="block__in">
+                        <nav class="header__nav">
+                            <a href="{{ path('homepage') }}" class="header__logo">
+                                {#<img src="{{ asset('build/images/logo.svg') }}" alt="Logo">#}
+                            </a>
+
+                            <div class="header__nav_menu">
+                                <ul class="header__nav_list">
+                                    <li class="header__nav_item"><a href="{{ path('homepage') }}" class="header__nav_link" title="{{ 'Home' | trans }}">{{ 'Home' | trans }}</a></li>
+                                    <li class="header__nav_item"><a href="" class="header__nav_link" title="{{ 'About us' | trans }}">{{ 'About us' | trans }}</a></li>
+                                    <li class="header__nav_item"><a href="" class="header__nav_link" title="{{ 'Service' | trans }}">{{ 'Service' | trans }}</a></li>
+                                    <li class="header__nav_item"><a href="" class="header__nav_link" title="{{ 'Projects' | trans }}">{{ 'Projects' | trans }}</a></li>
+                                    <li class="header__nav_item"><a href="{{ path('homepage') }}#contact" class="header__nav_link" title="{{ 'Contact' | trans }}">{{ 'Contact' | trans }}</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="layout--container">
+            {% block body %}{% endblock %}
+        </div>
+        <div class="layout--footer">
+            <footer class="footer block">
+                <div class="footer__triangle">
+                    <svg width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" height="120">
+                        <polygon fill="#95a3b6" points="0 0, 70 90, 100 0"></polygon>
+                        <polygon fill="#00cab6" fill-opacity="0.7" points="0 0, 90 70, 100 0"></polygon>
+                    </svg>
+                </div>
+                <div class="block__in">
+                    <div class="footer__nav">
+                        <a href="{{ path('homepage') }}#contact" class="footer__nav_link" title="{{ 'Contact' | trans }}">{{ 'Contact' | trans }}</a>
+                        <span class="-footer-line"></span>
+                        <a href="{{ path('impressum') }}" class="footer__nav_link" title="{{ 'Impressum' | trans }}">{{ 'Impressum' | trans }}</a>
+                        <span class="-footer-line"></span>
+                        <a href="{{ path('privacy_policy') }}" class="footer__nav_link" title="{{ 'Privacy Policy' | trans }}">{{ 'Privacy Policy' | trans }}</a>
+                    </div>
+{#                    <span class="footer__contact_text">{{ 'Follow us' | trans }}:</span>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-twitter-square"></i></a>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-tumblr-square"></i></a>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-facebook-square"></i></a>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-linkedin"></i></a>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-xing-square"></i></a>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-google-plus-square"></i></a>#}
+{#                    <a href="#" target="_blank" rel="nofollow" class="footer__contact_link"><i class="footer__contact_ico fab fa-instagram"></i></a>#}
+                </div>
+            </footer>
+        </div>
+    </div>
+{% endblock document %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('js/frontend') }}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144735550-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-144735550-1');
+    </script>
+{% endblock %}
+</body>
+</html>
