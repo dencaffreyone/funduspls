@@ -1,0 +1,6 @@
+version: '2'
+
+syncs:
+  techknowledgence-app-sync:
+    src: '.'
+    sync_excludes: ['.git', '.docker-sync', 'var/log', 'var/cache', 'node_modules', '.DS_Store', '.idea']

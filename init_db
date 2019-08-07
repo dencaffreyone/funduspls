@@ -1,0 +1,10 @@
+#!/bin/sh
+
+php bin/console doctrine:database:drop --force --env=dev
+php bin/console doctrine:database:create --env=dev
+php bin/console doctrine:migrations:migrate --env=dev
+
+php bin/console fixtures:load --env=dev
+
+php bin/console_frontend debug:router --env=dev
+./cc --env=dev

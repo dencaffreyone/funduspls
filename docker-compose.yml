@@ -1,0 +1,43 @@
+version: '3.1'
+
+volumes:
+  techknowledgence-app-sync:
+    external: true
+
+services:
+  techknowledgence-php:
+    build: './docker/php/'
+    container_name: 'techknowledgence_php'
+    ports:
+      - "9000:9000"
+    volumes:
+      - techknowledgence-app-sync:/var/www/techknowledgence
+    working_dir: /var/www/techknowledgence
+    links:
+      - techknowledgence-mysql
+
+  techknowledgence-mysql:
+    build: './docker/mysql/'
+    container_name: 'techknowledgence_mysql'
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+  techknowledgence-apache:
+    build: './docker/apache/'
+    container_name: 'techknowledgence_apache'
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - techknowledgence-php
+      - techknowledgence-mysql
+    volumes:
+      - techknowledgence-app-sync:/var/www/techknowledgence
+    links:
+      - techknowledgence-mysql
